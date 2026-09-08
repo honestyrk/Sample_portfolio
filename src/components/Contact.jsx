@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, GitFork, Globe, Link, ArrowUpRight, CheckCircle } from "lucide-react";
+import { Mail, GitFork, Globe, Link, ArrowUpRight, CheckCircle, Phone } from "lucide-react";
 import Button from "./Button";
 
 const fadeUp = {
@@ -16,8 +16,14 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@alexmorgan.dev",
-    href: "mailto:hello@alexmorgan.dev",
+    value: "honestyrk@gmail.com",
+    href: "mailto:honestyrk@gmail.com",
+  },
+  {
+    icon: Phone,
+    label: "WhatsApp",
+    value: "+91 95972 56644",
+    href: "https://wa.me/919597256644",
   },
   {
     icon: GitFork,
@@ -30,12 +36,6 @@ const contactLinks = [
     label: "LinkedIn",
     value: "linkedin.com/in/alexmorgan",
     href: "https://linkedin.com",
-  },
-  {
-    icon: Link,
-    label: "Instagram",
-    value: "@alexmorgan.dev",
-    href: "https://instagram.com",
   },
 ];
 
@@ -71,12 +71,23 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-      setFormState({ name: "", email: "", projectType: "", message: "" });
-    }, 800);
+
+    const { name, email, projectType, message } = formState;
+    const text = [
+      `👋 Hi, I'm ${name}`,
+      `📧 Email: ${email}`,
+      projectType ? `🗂 Project Type: ${projectType}` : null,
+      `📝 Message:\n${message}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const waUrl = `https://wa.me/919597256644?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+
+    setSubmitting(false);
+    setSubmitted(true);
+    setFormState({ name: "", email: "", projectType: "", message: "" });
   };
 
   return (

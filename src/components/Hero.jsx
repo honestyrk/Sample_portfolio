@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { FlowButton } from "./ui/flow-button";
+import { HeroButton } from "./ui/hero-button";
+import GhostFibers from "./GhostFibers";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -40,8 +41,37 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="hero section">
-      <div className="hero__inner">
+    <section id="hero" className="hero section" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* GhostFibers animated background */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <GhostFibers
+          lineColor="#1a0f3c"
+          glowColor="#4f46e5"
+          speed={0.18}
+          scale={2.2}
+          rotation={0}
+          rotationSpeed={0.2}
+          layers={5}
+          waveAmplitude={0.018}
+          waveFrequency={3}
+          waveSpeed={0.12}
+          layerSpeed={0.07}
+          twist={0.12}
+          twistFrequency={5}
+          twistSpeed={1.1}
+          lineFrequency={5}
+          lineSpacing={2}
+          lineSharpness={18}
+          glowFalloff={9}
+          glowIntensity={1.8}
+          brightness={2.2}
+          blueBoost={1.35}
+          vignette={0.85}
+          grain={0.04}
+          dpr={1}
+        />
+      </div>
+      <div className="hero__inner" style={{ position: 'relative', zIndex: 1 }}>
         {/* Text content */}
         <div className="hero__content">
           <motion.div
@@ -62,9 +92,8 @@ export default function Hero() {
             animate="visible"
             custom={1}
           >
-            I build digital{" "}
-            <span className="hero__title-accent">experiences</span> that turn
-            ideas into reality.
+            I create website for Business and Freelance{" "}
+            <span className="hero__title-accent">Professionals</span>
           </motion.h1>
 
           <motion.p
@@ -85,12 +114,12 @@ export default function Hero() {
             animate="visible"
             custom={3}
           >
-            <FlowButton
-              text="View My Work"
-              variant="accent"
+            <HeroButton
+              text="Showcase"
+              variant="primary"
               onClick={scrollToProjects}
             />
-            <FlowButton
+            <HeroButton
               text="Let's Talk"
               variant="light"
               onClick={scrollToContact}

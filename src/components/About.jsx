@@ -45,7 +45,7 @@ export default function About() {
               animate={inView ? "visible" : "hidden"}
               custom={1}
             >
-              A Premkumar developer who cares about the details.
+              A Ramkumar developer who cares about the details.
             </motion.h2>
 
             <motion.p
@@ -55,7 +55,7 @@ export default function About() {
               animate={inView ? "visible" : "hidden"}
               custom={2}
             >
-              I&apos;m Prem Kumar, a freelance web developer with over three years of
+              I&apos;m Ramkumar, a freelance web developer with over three years of
               experience building high-quality digital products. I specialize in
               frontend development with React and Next.js, turning complex design
               visions into performant, accessible and beautiful websites.
