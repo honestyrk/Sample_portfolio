@@ -15,16 +15,10 @@ const fadeUp = {
 
 const contactLinks = [
   {
-    icon: Mail,
-    label: "Email",
-    value: "ramkumarranjith2009@gmail.com",
-    href: "mailto:ramkumarranjith2009@gmail.com",
-  },
-  {
     icon: Phone,
     label: "WhatsApp",
-    value: "+91 63798 41993",
-    href: "https://wa.me/916379841993",
+    value: "+91 95972 56644",
+    href: "https://wa.me/919597256644",
   },
 ];
 
@@ -79,7 +73,7 @@ export default function Contact() {
       .filter(Boolean)
       .join("\n");
 
-    const waUrl = `https://wa.me/916379841993?text=${encodeURIComponent(text)}`;
+    const waUrl = `https://wa.me/919597256644?text=${encodeURIComponent(text)}`;
     window.open(waUrl, "_blank", "noopener,noreferrer");
 
     setSubmitting(false);

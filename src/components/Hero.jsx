@@ -115,7 +115,7 @@ export default function Hero() {
             custom={3}
           >
             <HeroButton
-              text="Showcase"
+              text="Explore Projects"
               variant="primary"
               onClick={scrollToProjects}
             />
