@@ -125,7 +125,7 @@ export default function Projects() {
             <Button
               variant="secondary"
               arrow
-              onClick={() => {}}
+              onClick={() => { }}
               aria-label="View all projects"
             >
               View All

@@ -1,10 +1,17 @@
-﻿import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-export function FlowButton({ text = 'Modern Button', onClick, variant = 'dark' }) {
+export function FlowButton({
+  text = 'Modern Button',
+  onClick,
+  variant = 'dark',
+  className,
+  'aria-label': ariaLabel,
+}) {
   return (
     <button
-      className={`flow-btn flow-btn--${variant}`}
+      className={`flow-btn flow-btn--${variant}${className ? ` ${className}` : ''}`}
       onClick={onClick}
+      aria-label={ariaLabel || text}
     >
       <ArrowRight className="flow-btn__arrow flow-btn__arrow--left" aria-hidden="true" />
       <span className="flow-btn__text">{text}</span>

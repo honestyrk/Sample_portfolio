@@ -92,8 +92,8 @@ export default function Hero() {
             animate="visible"
             custom={1}
           >
-            I create website for Business and Freelance{" "}
-            <span className="hero__title-accent">Professionals</span>
+            I Create a Website for my{" "}
+            <span className="hero__title-accent">Professional</span>
           </motion.h1>
 
           <motion.p
@@ -118,11 +118,6 @@ export default function Hero() {
               text="Showcase"
               variant="primary"
               onClick={scrollToProjects}
-            />
-            <HeroButton
-              text="Let's Talk"
-              variant="light"
-              onClick={scrollToContact}
             />
           </motion.div>
 

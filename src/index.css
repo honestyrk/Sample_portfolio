@@ -1210,6 +1210,13 @@ img, video {
    CONTACT
    ============================================ */
 
+/* Particle canvas background container */
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
 .contact__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;

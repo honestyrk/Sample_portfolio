@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, GitFork, Globe, Link, ArrowUpRight, CheckCircle, Phone } from "lucide-react";
+import { Mail, Link, ArrowUpRight, CheckCircle, Phone } from "lucide-react";
 import Button from "./Button";
+import { useParticleCanvas } from "../hooks/useParticleCanvas";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -16,26 +17,14 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "honestyrk@gmail.com",
-    href: "mailto:honestyrk@gmail.com",
+    value: "ramkumarranjith2009@gmail.com",
+    href: "mailto:ramkumarranjith2009@gmail.com",
   },
   {
     icon: Phone,
     label: "WhatsApp",
-    value: "+91 95972 56644",
-    href: "https://wa.me/919597256644",
-  },
-  {
-    icon: GitFork,
-    label: "GitHub",
-    value: "github.com/alexmorgan",
-    href: "https://github.com",
-  },
-  {
-    icon: Globe,
-    label: "LinkedIn",
-    value: "linkedin.com/in/alexmorgan",
-    href: "https://linkedin.com",
+    value: "+91 63798 41993",
+    href: "https://wa.me/916379841993",
   },
 ];
 
@@ -53,6 +42,14 @@ const projectTypes = [
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const canvasRef = useRef(null);
+
+  useParticleCanvas(canvasRef, {
+    bgColor: 'rgba(5, 2, 14, 0.96)',
+    particleColor: 'rgba(191, 128, 255, 0.75)',
+    density: 10000,
+    mouseRadius: 160,
+  });
 
   const [formState, setFormState] = useState({
     name: "",
@@ -82,7 +79,7 @@ export default function Contact() {
       .filter(Boolean)
       .join("\n");
 
-    const waUrl = `https://wa.me/919597256644?text=${encodeURIComponent(text)}`;
+    const waUrl = `https://wa.me/916379841993?text=${encodeURIComponent(text)}`;
     window.open(waUrl, "_blank", "noopener,noreferrer");
 
     setSubmitting(false);
@@ -91,8 +88,21 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section" ref={ref} aria-labelledby="contact-heading">
-      <div className="container">
+    <section id="contact" className="section contact-section" ref={ref} aria-labelledby="contact-heading">
+      {/* Particle canvas background */}
+      <canvas
+        ref={canvasRef}
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
+      />
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="contact__inner">
           {/* Left: info */}
           <div className="contact__info">
