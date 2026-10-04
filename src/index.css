@@ -562,22 +562,44 @@ img, video {
   padding-top: 100px;
   position: relative;
   overflow: hidden;
+  /* Let the WebGL canvas show through — body bg is still dark */
+  background: transparent;
+}
+
+/* Left-side legibility veil so text reads over the red flower */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(10,10,15,0.82) 0%,
+    rgba(10,10,15,0.55) 40%,
+    rgba(10,10,15,0.08) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  /* Single column — text left, flower fills the rest */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
   max-width: var(--content-max);
   margin: 0 auto;
   padding: 0 var(--gutter);
+  position: relative;
+  z-index: 1;
 }
 
 .hero__content {
   position: relative;
   z-index: 1;
+  max-width: 540px;
+  width: 100%;
 }
 
 .hero__badge {
@@ -1470,16 +1492,9 @@ textarea.form-control {
    ============================================ */
 
 @media (max-width: 1024px) {
-  .hero__inner {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .hero__visual {
-    order: -1;
-    max-width: 500px;
-    margin: 0 auto;
-    width: 100%;
+  /* hero is already single-column — just tighten the text limit */
+  .hero__content {
+    max-width: 100%;
   }
 
   .hero__subtitle {

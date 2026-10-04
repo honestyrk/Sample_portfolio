@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { HeroButton } from "./ui/hero-button";
-import GhostFibers from "./GhostFibers";
+import AnimatedButton from "./ui/AnimatedButton";
+import LycorisFlower from "./ui/LycorisFlower";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -20,7 +20,7 @@ const codeLines = [
   { num: 1, content: <span className="c-comment">// crafting digital experiences</span> },
   { num: 2, content: "" },
   { num: 3, content: <><span className="c-keyword">const</span> <span className="c-accent">developer</span> <span className="c-bracket">=</span> <span className="c-bracket">{"{"}</span></> },
-  { num: 4, content: <>&nbsp;&nbsp;<span className="c-property">name</span><span className="c-bracket">:</span> <span className="c-string">&apos;Alex Morgan&apos;</span><span className="c-bracket">,</span></> },
+  { num: 4, content: <>&nbsp;&nbsp;<span className="c-property">name</span><span className="c-bracket">:</span> <span className="c-string">&apos;Ramkumar&apos;</span><span className="c-bracket">,</span></> },
   { num: 5, content: <>&nbsp;&nbsp;<span className="c-property">role</span><span className="c-bracket">:</span> <span className="c-string">&apos;Freelance Developer&apos;</span><span className="c-bracket">,</span></> },
   { num: 6, content: <>&nbsp;&nbsp;<span className="c-property">focus</span><span className="c-bracket">:</span> <span className="c-bracket">[</span></> },
   { num: 7, content: <>&nbsp;&nbsp;&nbsp;&nbsp;<span className="c-string">&apos;React&apos;</span><span className="c-bracket">,</span> <span className="c-string">&apos;Next.js&apos;</span><span className="c-bracket">,</span></> },
@@ -42,33 +42,19 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero section" style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* GhostFibers animated background */}
+      {/* Lycoris red-chrome spider lily — WebGL background */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-        <GhostFibers
-          lineColor="#1a0f3c"
-          glowColor="#4f46e5"
-          speed={0.18}
-          scale={2.2}
-          rotation={0}
-          rotationSpeed={0.2}
-          layers={5}
-          waveAmplitude={0.018}
-          waveFrequency={3}
-          waveSpeed={0.12}
-          layerSpeed={0.07}
-          twist={0.12}
-          twistFrequency={5}
-          twistSpeed={1.1}
-          lineFrequency={5}
-          lineSpacing={2}
-          lineSharpness={18}
-          glowFalloff={9}
-          glowIntensity={1.8}
-          brightness={2.2}
-          blueBoost={1.35}
-          vignette={0.85}
-          grain={0.04}
-          dpr={1}
+        <LycorisFlower
+          crimson="#e3131b"
+          florets={6}
+          seed={7}
+          alive={true}
+          offsetX={0.42}
+          offsetY={0.05}
+          size={0.95}
+          elevation={14}
+          spinInit={0.4}
+          stemFrac={0.45}
         />
       </div>
       <div className="hero__inner" style={{ position: 'relative', zIndex: 1 }}>
@@ -92,8 +78,8 @@ export default function Hero() {
             animate="visible"
             custom={1}
           >
-            I Create a Website for my{" "}
-            <span className="hero__title-accent">Professional</span>
+            We Build Websites for our{" "}
+            <span className="hero__title-accent">Families</span>
           </motion.h1>
 
           <motion.p
@@ -114,9 +100,8 @@ export default function Hero() {
             animate="visible"
             custom={3}
           >
-            <HeroButton
-              text="Explore Projects"
-              variant="primary"
+            <AnimatedButton
+              text="Click This"
               onClick={scrollToProjects}
             />
           </motion.div>
@@ -133,57 +118,6 @@ export default function Hero() {
             Available for new projects
           </motion.div>
         </div>
-
-        {/* Code visual */}
-        <motion.div
-          className="hero__visual"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-          aria-hidden="true"
-        >
-          <div className="hero-visual">
-            {/* Floating card 1 */}
-            <div className="floating-card floating-card--1">
-              <div className="floating-card__icon" style={{ background: "rgba(99,102,241,0.15)" }}>
-                ⚡
-              </div>
-              <div>
-                <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginBottom: 2 }}>Performance</div>
-                <div style={{ color: "var(--accent-light)" }}>100 / 100</div>
-              </div>
-            </div>
-
-            {/* Main code window */}
-            <div className="code-window">
-              <div className="code-window__header">
-                <span className="code-window__dot code-window__dot--red" />
-                <span className="code-window__dot code-window__dot--yellow" />
-                <span className="code-window__dot code-window__dot--green" />
-                <span className="code-window__title">portfolio.js</span>
-              </div>
-              <div className="code-window__body">
-                {codeLines.map((line) => (
-                  <div key={line.num} className="code-line">
-                    <span className="code-line__num">{line.num}</span>
-                    <span className="code-line__content">{line.content}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Floating card 2 */}
-            <div className="floating-card floating-card--2">
-              <div className="floating-card__icon" style={{ background: "rgba(34,197,94,0.15)" }}>
-                ✓
-              </div>
-              <div>
-                <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginBottom: 2 }}>Project deployed</div>
-                <div style={{ color: "#4ade80" }}>nova-landing.vercel.app</div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

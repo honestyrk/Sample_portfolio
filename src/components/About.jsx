@@ -45,7 +45,7 @@ export default function About() {
               animate={inView ? "visible" : "hidden"}
               custom={1}
             >
-              A Talkwith.rk developer who cares about the details.
+              A Ramkumar Details is here!
             </motion.h2>
 
             <motion.p
