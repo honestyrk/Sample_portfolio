@@ -101,7 +101,7 @@ export default function Hero() {
             custom={3}
           >
             <AnimatedButton
-              text="Click This"
+              text="Explore"
               onClick={scrollToProjects}
             />
           </motion.div>
